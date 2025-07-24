@@ -1,0 +1,41 @@
+.table-container {
+    margin: 20px;
+    overflow-x: auto;
+}
+
+.instrucoes-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.instrucoes-table th,
+.instrucoes-table td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.instrucoes-table th {
+    background-color: #444444;
+}
+
+.executor-badge {
+    display: inline-block;
+    margin-right: 5px;
+    padding: 3px 8px;
+    background-color: #666666;
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+
+
+.mention {
+    background-color: #444444;
+    padding: 2px 4px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.mention:hover {
+    background-color: #666666;
+}
