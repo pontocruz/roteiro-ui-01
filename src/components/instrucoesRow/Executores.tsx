@@ -1,9 +1,15 @@
 interface ExecutoresProps {
-    executores: Executor[];
-
+    instrucoesPersonagens: Instrucao['instrucoesPersonagens'];
 }
 
-export default function Executores({ executores }: ExecutoresProps) {
+export default function Executores({ instrucoesPersonagens }: ExecutoresProps) {
+    const executores = instrucoesPersonagens.map(ip => ({
+        personagemId: ip.personagemId ?? undefined,
+        nome: ip.nome ?? undefined,
+        showAll: ip.showAll,
+        showAllExcept: ip.showAllExcept
+    }));
+
     return (
         <span className="executores">
             {executores.some(ex => ex.showAll) ? (
