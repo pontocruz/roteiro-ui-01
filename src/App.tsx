@@ -1,11 +1,11 @@
 // ./src/App.tsx
-import InstrucoesTable from './components/Row/InstrucoesTable.tsx';
-import './components/Row/InstrucoesTable.css';
+import './components/css/InstrucoesTable.css';
+import InstrucoesTable from './components/Table/InstrucoesTable.tsx';
 
 function App() {
     return (
         <div className="app">
-            <InstrucoesTable />
+            <InstrucoesTable/>
         </div>
     );
 }
