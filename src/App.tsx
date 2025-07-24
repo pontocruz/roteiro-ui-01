@@ -1,5 +1,5 @@
-import InstrucoesTable from './components/instrucoesRow/InstrucoesTable.tsx';
-import './components/instrucoesRow/InstrucoesTable.css';
+import InstrucoesTable from './components/Row/InstrucoesTable.tsx';
+import './components/Row/InstrucoesTable.css';
 
 function App() {
     return (
