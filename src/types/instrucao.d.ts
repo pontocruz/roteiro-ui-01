@@ -1,4 +1,4 @@
-//.src/types/instrucao.d.ts
+// ./src/types/instrucao.d.ts
 export interface Instrucao {
     id: number;
     cenaId: number;

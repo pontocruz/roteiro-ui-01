@@ -1,4 +1,4 @@
-// .src/components/Form/InstrucaoForm.tsx
+// ./src/components/Form/InstrucaoForm.tsx
 import {useState} from 'react';
 import type {InstrucaoFormData} from '../../types/instrucao';
 

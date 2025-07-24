@@ -1,3 +1,6 @@
+// ./src/components/Row/Executores.tsx
+import type {Instrucao} from "../../types/instrucao";
+
 interface ExecutoresProps {
     instrucoesPersonagens: Instrucao['instrucoesPersonagens'];
 }
