@@ -1,5 +1,5 @@
 //.src/types/instrucao.d.ts
-interface Instrucao {
+export interface Instrucao {
     id: number;
     cenaId: number;
     ordemCronologica: number;
@@ -13,10 +13,12 @@ interface Instrucao {
     }[];
 }
 
-interface InstrucaoFormData {
+export interface InstrucaoFormData {
     id: number;
     cenaId: number;
     ordemCronologica: number;
     tipoDeInstrucao: string;
     texto?: string;
 }
+
+

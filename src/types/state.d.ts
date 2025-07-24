@@ -1,5 +1,5 @@
 // .src/types/state.d.ts
-type AppState = {
+export type AppState = {
     mode: 'IDLE' | 'EDIT';
     editingId: number | null;
 };

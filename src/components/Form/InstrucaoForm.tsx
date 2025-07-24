@@ -1,4 +1,7 @@
 // .src/components/Form/InstrucaoForm.tsx
+import {useState} from 'react';
+import type {InstrucaoFormData} from '../../types/instrucao';
+
 interface InstrucaoFormProps {
     id: number;
     ordemCronologica: number;
@@ -8,21 +11,43 @@ interface InstrucaoFormProps {
 
 export default function InstrucaoForm(
     {id, ordemCronologica, onCancel, onSubmit}: InstrucaoFormProps) {
+    const [formData, setFormData] = useState<InstrucaoFormData>({
+        id,
+        ordemCronologica,
+        cenaId: 1,
+        tipoDeInstrucao: 'Fala',
+        texto: '',
+    });
+
     const handleSubmit = () => {
         if (onSubmit) {
-            onSubmit({id, ordemCronologica, cenaId: 0, tipoDeInstrucao: ""});
+            onSubmit(formData);
         }
     };
+
     return (
         <tr className="instrucao-form">
             <td>
                 #{ordemCronologica}
-                {/* select tipoDeInstrucao AUTOFOCUS */}
+                <select
+                    value={formData.tipoDeInstrucao}
+                    onChange={(e) =>
+                        setFormData({...formData, tipoDeInstrucao: e.target.value})
+                    }
+                    autoFocus
+                >
+                    <option value="Fala">Fala</option>
+                    <option value="Acao">Ação</option>
+                </select>
             </td>
             <td>
-                ID: {id}
-                {/* component <Personagens> */}
-                {/* component <Texto> */}
+                <textarea
+                    value={formData.texto}
+                    onChange={(e) =>
+                        setFormData({...formData, texto: e.target.value})
+                    }
+                    placeholder="Texto da instrução"
+                />
             </td>
             <td className="form-actions">
                 <button onClick={onCancel} className="cancel-btn">

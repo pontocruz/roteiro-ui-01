@@ -1,14 +1,21 @@
 // .src/components/Row/ActionButtons.tsx
+import type { AppState } from '../../types/state';
+
 interface ActionButtonsProps {
-    onEdit: () => void;
+    id: number;
+    setAppState: (state: AppState) => void;
 }
 
-export default function ActionButtons({onEdit}: ActionButtonsProps) {
+export default function ActionButtons({ id, setAppState }: ActionButtonsProps) {
+    const handleEdit = () => {
+        setAppState({ mode: 'EDIT', editingId: id });
+    };
+
     return (
         <div className="action-buttons">
-            <button onClick={onEdit} className="edit-btn">editar</button>
+            <button onClick={handleEdit} className="edit-btn">
+                editar
+            </button>
         </div>
     );
 }
-
-// delete, move, insert, check
