@@ -2,7 +2,7 @@ interface ExecutoresProps {
     instrucoesPersonagens: Instrucao['instrucoesPersonagens'];
 }
 
-export default function Executores({ instrucoesPersonagens }: ExecutoresProps) {
+export default function Executores({instrucoesPersonagens}: ExecutoresProps) {
     const executores = instrucoesPersonagens.map(ip => ({
         personagemId: ip.personagemId ?? undefined,
         nome: ip.nome ?? undefined,
@@ -25,11 +25,8 @@ export default function Executores({ instrucoesPersonagens }: ExecutoresProps) {
                             </span>
                         ))}
                 </>
-            ) : (
-                executores.map(ex => (
-                    <span key={ex.personagemId} className="executor-badge">
-                        {ex.nome}
-                    </span>
+            ) : (executores.map(ex => (
+                    <span key={ex.personagemId} className="executor-badge">{ex.nome}</span>
                 ))
             )}
         </span>
