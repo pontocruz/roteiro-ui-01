@@ -11,6 +11,7 @@ interface Instrucao {
         nome: string | null;
     }[];
 }
+
 interface InstrucaoFormData {
     id: number;
     cenaId: number;

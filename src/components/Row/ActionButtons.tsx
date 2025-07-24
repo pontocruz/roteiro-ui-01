@@ -12,3 +12,5 @@ export default function ActionButtons({ onEdit }: ActionButtonsProps) {
         </div>
     );
 }
+
+// delete, move, insert, check
