@@ -1,4 +1,4 @@
-// components/Form/InstrucaoForm.tsx
+// .src/components/Form/InstrucaoForm.tsx
 interface InstrucaoFormProps {
     id: number;
     ordemCronologica: number;

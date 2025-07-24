@@ -1,3 +1,4 @@
+//.src/types/instrucao.d.ts
 interface Instrucao {
     id: number;
     cenaId: number;
