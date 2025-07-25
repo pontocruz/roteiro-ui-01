@@ -31,8 +31,7 @@ export default function InstrucaoRow(
                     className="js-texto"
                     dangerouslySetInnerHTML={{
                         __html: parseMentionsToButtons(inst.texto),
-                    }}
-                />
+                    }}/>
             </td>
             <td>
                 <ActionButtons id={inst.id} setAppState={setAppState}/>

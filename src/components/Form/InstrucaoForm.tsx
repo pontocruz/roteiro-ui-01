@@ -29,15 +29,13 @@ export default function InstrucaoForm(
         <tr className="instrucao-form">
             <td>
                 #{ordemCronologica}
+                <br/>
                 <select
                     value={formData.tipoDeInstrucao}
-                    onChange={(e) =>
-                        setFormData({...formData, tipoDeInstrucao: e.target.value})
-                    }
-                    autoFocus
-                >
+                    onChange={(e) => setFormData({...formData, tipoDeInstrucao: e.target.value})} autoFocus>
                     <option value="Fala">Fala</option>
                     <option value="Acao">Ação</option>
+                    <option value="Fala">Nota</option>
                 </select>
             </td>
             <td>
@@ -55,7 +53,7 @@ export default function InstrucaoForm(
                 </button>
                 {onSubmit && (
                     <button onClick={handleSubmit} className="submit-btn">
-                        Salvar
+                        salvar
                     </button>
                 )}
             </td>

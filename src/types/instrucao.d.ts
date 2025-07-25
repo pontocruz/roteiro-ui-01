@@ -1,4 +1,6 @@
 // ./src/types/instrucao.d.ts
+type TipoDeInstrucao = 'Fala' | 'Acao' | 'Nota';
+
 export interface Instrucao {
     id: number;
     cenaId: number;
