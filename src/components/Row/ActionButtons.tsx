@@ -1,4 +1,4 @@
-// ./src/components/Row/ActionButtons.tsx
+// FILE: ./src/components/Row/ActionButtons.tsx
 import type { AppState } from '../../types/state';
 
 interface ActionButtonsProps {

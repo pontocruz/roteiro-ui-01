@@ -1,4 +1,4 @@
-// ./src/types/instrucao.d.ts
+// FILE: ./src/types/instrucao.d.ts
 type TipoDeInstrucao = 'Fala' | 'Acao' | 'Nota';
 
 export interface Instrucao {

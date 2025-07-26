@@ -1,4 +1,4 @@
-// ./src/components/Row/InstrucaoRow.tsx
+// FILE: ./src/components/Row/InstrucaoRow.tsx
 import type {Instrucao} from '../../types/instrucao';
 import Executores from './Executores';
 import ActionButtons from './ActionButtons';

@@ -1,4 +1,4 @@
-// ./src/components/Row/InstrucoesTable.tsx
+// FILE: ./src/components/Row/InstrucoesTable.tsx
 import {useState, useEffect, Fragment} from 'react';
 import api from '../../api/client.ts';
 import type {AppState} from '../../types/state';

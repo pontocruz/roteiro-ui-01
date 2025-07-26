@@ -1,4 +1,4 @@
-// ./src/App.tsx
+// FILE: ./src/App.tsx
 import './components/css/InstrucoesTable.css';
 import InstrucoesTable from './components/Table/InstrucoesTable.tsx';
 
