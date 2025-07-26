@@ -22,11 +22,25 @@ export default function InstrucoesTable() {
         fetchData();
     }, []);
 
-    const handleSubmit = (formData: InstrucaoFormData) => {
-        setInstrucoes((prev) =>
-            prev.map((inst) =>
-                inst.id === formData.id ? {...inst, ...formData} : inst));
-        setAppState({mode: 'IDLE', editingId: null});
+    const handleSubmit = async (formData: InstrucaoFormData) => {
+        try {
+            // Make API call to update instruction
+            const response = await api.put(`api/roteiros/${formData.id}`, formData);
+
+            // Update local state with the updated instruction
+            setInstrucoes(prev =>
+                prev.map(inst =>
+                    inst.id === formData.id ? response.data : inst
+                )
+            );
+
+            // Return to idle state
+            setAppState({mode: 'IDLE', editingId: null});
+
+        } catch (error) {
+            console.error('Error updating instruction:', error);
+            // We'll add proper error handling later
+        }
     };
 
     return (
