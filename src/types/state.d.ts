@@ -1,5 +1,5 @@
 // FILE: ./src/types/state.d.ts
 export type AppState = {
-    mode: 'IDLE' | 'EDIT';
+    mode: 'IDLE' | 'EDIT' | 'CREATE';
     editingId: number | null;
 };

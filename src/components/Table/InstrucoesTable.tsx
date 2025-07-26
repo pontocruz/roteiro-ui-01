@@ -1,4 +1,4 @@
-// FILE: ./src/components/Row/InstrucoesTable.tsx
+// FILE: ./src/components/Table/InstrucoesTable.tsx
 import {useState, useEffect, Fragment} from 'react';
 import api from '../../api/client.ts';
 import type {AppState} from '../../types/state';
@@ -41,14 +41,53 @@ export default function InstrucoesTable() {
                             setAppState={setAppState}/>
                         {appState.editingId === inst.id && (
                             <InstrucaoForm
-                                id={inst.id}
-                                ordemCronologica={inst.ordemCronologica}
+                                mode="edit"
+                                cenaId={inst.cenaId}
+                                initialData={{
+                                    id: inst.id,
+                                    ordemCronologica: inst.ordemCronologica,
+                                    tipoDeInstrucao: inst.tipoDeInstrucao,
+                                    texto: inst.texto
+                                }}
                                 onCancel={() => setAppState({mode: 'IDLE', editingId: null})}
-                                onSubmit={handleSubmit}/>
+                                onSubmit={handleSubmit}
+                            />
                         )}
+
                     </Fragment>
                 ))}
+                {appState.mode === 'CREATE' && (
+                    <InstrucaoForm
+                        mode="create"
+                        cenaId={1} // Or get this from props/state
+                        initialData={{
+                            ordemCronologica: instrucoes.length > 0
+                                ? Math.max(...instrucoes.map(i => i.ordemCronologica)) + 1
+                                : 1
+                        }}
+                        onCancel={() => setAppState({mode: 'IDLE', editingId: null})}
+                        onSubmit={(formData) => {
+                            // We'll implement the actual creation later
+                            console.log('Creating new:', formData);
+                            setAppState({mode: 'IDLE', editingId: null});
+                        }}
+                    />
+                )}
                 </tbody>
+                <tfoot>
+                <tr>
+                    <td colSpan={3} className="add-new-container">
+                        {appState.mode !== 'CREATE' && (
+                            <button
+                                onClick={() => setAppState({ mode: 'CREATE', editingId: null })}
+                                className="add-new-btn"
+                            >
+                                + Adicionar Nova Instrução
+                            </button>
+                        )}
+                    </td>
+                </tr>
+                </tfoot>
             </table>
         </div>
     );

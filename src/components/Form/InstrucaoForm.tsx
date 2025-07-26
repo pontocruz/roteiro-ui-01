@@ -3,20 +3,32 @@ import {useState} from 'react';
 import type {InstrucaoFormData} from '../../types/instrucao';
 
 interface InstrucaoFormProps {
-    id: number;
-    ordemCronologica: number;
+    mode: 'create' | 'edit';
+    cenaId: number;
+    initialData?: {
+        id?: number;
+        ordemCronologica?: number;
+        tipoDeInstrucao?: string;
+        texto?: string;
+    };
     onCancel: () => void;
-    onSubmit?: (data: InstrucaoFormData) => void;
+    onSubmit: (data: InstrucaoFormData) => void;
 }
 
 export default function InstrucaoForm(
-    {id, ordemCronologica, onCancel, onSubmit}: InstrucaoFormProps) {
+    { mode, cenaId, initialData = {}, onCancel, onSubmit }: InstrucaoFormProps) {
+
+    // Calculate next order for new instructions
+    const nextOrder = mode === 'create'
+        ? (initialData.ordemCronologica || 0) + 1
+        : initialData.ordemCronologica || 1;
+
     const [formData, setFormData] = useState<InstrucaoFormData>({
-        id,
-        ordemCronologica,
-        cenaId: 1,
-        tipoDeInstrucao: 'Fala',
-        texto: '',
+        id: initialData.id || 0, // Will be 0 for new instructions
+        ordemCronologica: nextOrder,
+        cenaId: cenaId,
+        tipoDeInstrucao: initialData.tipoDeInstrucao || 'Fala',
+        texto: initialData.texto || '',
     });
 
     const handleSubmit = () => {
@@ -28,34 +40,48 @@ export default function InstrucaoForm(
     return (
         <tr className="instrucao-form">
             <td>
-                #{ordemCronologica}
-                <br/>
+                #{formData.ordemCronologica}
+                {mode === 'edit' ? (
+                    <span className="order-display">(não editável)</span>
+                ) : null}
+                <br />
                 <select
                     value={formData.tipoDeInstrucao}
-                    onChange={(e) => setFormData({...formData, tipoDeInstrucao: e.target.value})} autoFocus>
+                    onChange={(e) =>
+                        setFormData({...formData, tipoDeInstrucao: e.target.value})
+                    }
+                    autoFocus
+                >
                     <option value="Fala">Fala</option>
                     <option value="Acao">Ação</option>
-                    <option value="Fala">Nota</option>
+                    <option value="Nota">Nota</option> {/* Fixed typo here */}
                 </select>
             </td>
             <td>
-                <textarea
-                    value={formData.texto}
-                    onChange={(e) =>
-                        setFormData({...formData, texto: e.target.value})
-                    }
-                    placeholder="Texto da instrução"
-                />
+            <textarea
+                value={formData.texto}
+                onChange={(e) =>
+                    setFormData({...formData, texto: e.target.value})
+                }
+                placeholder="Texto da instrução"
+                rows={3} // Added for better text input
+            />
             </td>
             <td className="form-actions">
-                <button onClick={onCancel} className="cancel-btn">
+                <button
+                    onClick={onCancel}
+                    className="cancel-btn"
+                    type="button" // Prevent accidental form submission
+                >
                     Cancelar
                 </button>
-                {onSubmit && (
-                    <button onClick={handleSubmit} className="submit-btn">
-                        salvar
-                    </button>
-                )}
+                <button
+                    onClick={handleSubmit}
+                    className="submit-btn"
+                    type="button" // Prevent accidental form submission
+                >
+                    {mode === 'create' ? 'Criar' : 'Salvar'}
+                </button>
             </td>
         </tr>
     );
