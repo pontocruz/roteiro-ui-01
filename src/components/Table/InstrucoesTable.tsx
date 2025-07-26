@@ -66,10 +66,21 @@ export default function InstrucoesTable() {
                                 : 1
                         }}
                         onCancel={() => setAppState({mode: 'IDLE', editingId: null})}
-                        onSubmit={(formData) => {
-                            // We'll implement the actual creation later
-                            console.log('Creating new:', formData);
-                            setAppState({mode: 'IDLE', editingId: null});
+                        onSubmit={async (formData) => {
+                            try {
+                                // 1. Make API call to create new instruction
+                                const response = await api.post('api/roteiros/instrucoes', formData);
+
+                                // 2. Update local state with the new instruction
+                                setInstrucoes(prev => [...prev, response.data]);
+
+                                // 3. Return to idle state
+                                setAppState({mode: 'IDLE', editingId: null});
+
+                            } catch (error) {
+                                console.error('Error creating instruction:', error);
+                                // We'll add proper error handling later
+                            }
                         }}
                     />
                 )}

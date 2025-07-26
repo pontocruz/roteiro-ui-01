@@ -20,7 +20,7 @@ export default function InstrucaoForm(
 
     // Calculate next order for new instructions
     const nextOrder = mode === 'create'
-        ? (initialData.ordemCronologica || 0) + 1
+        ? initialData.ordemCronologica || 1
         : initialData.ordemCronologica || 1;
 
     const [formData, setFormData] = useState<InstrucaoFormData>({
